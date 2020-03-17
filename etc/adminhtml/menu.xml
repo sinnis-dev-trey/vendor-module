@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Vendor_Module::venmod_import_parent"
+             title="Module Import"
+             translate="title"
+             module="Vendor_Module"
+             sortOrder="9999"
+             dependsOnModule="Vendor_Module"
+             resource="Magento_Backend::content"/>
+        <add id="Vendor_Module::venmod_import"
+             title="Import"
+             module="Vendor_Module"
+             parent="Vendor_Module::venmod_import_parent"
+             sortOrder="0"
+             action="venmod/import/index"
+             dependsOnModule="Vendor_Module"
+             resource="Magento_Backend::content"/>
+        <add id="Vendor_Module::venmod_compiler"
+             title="Compile Changes"
+             module="Vendor_Module"
+             parent="Vendor_Module::venmod_import_parent"
+             sortOrder="0"
+             action="venmod/compiler/index"
+             dependsOnModule="Vendor_Module"
+             resource="Magento_Backend::content"/>
+    </menu>
+</config>

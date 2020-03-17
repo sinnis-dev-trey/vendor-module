@@ -1,0 +1,26 @@
+<form method="post"
+      action="<?php echo $block->getUrl('venmod/import/submit'); ?>" 
+      id="import-form" 
+      class="" 
+      enctype="multipart/form-data">
+    <div>
+        <label for="product">Product:</label>
+        <select name="product" id="product" class="">
+            <?php foreach ($block->getProductCollection() as $product) : ?>
+                <?php $loaded = $product->load($product->getIdBySku($product->getSku())); ?>
+
+                <option value="<?php echo $loaded->getId(); ?>">
+                    <?php echo $loaded->getSku().': '. $loaded->getName(); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div>
+        <label for="import-file">File:</label>
+        <input type="file" name="import_file" id="import-file" class="" accept="csv" />
+    </div>
+    <div>
+        <input type="submit" name="submit" id="submit" class="" />
+    </div>
+    <?php echo $block->getBlockHtml('formkey');?>
+</form>

@@ -1,0 +1,34 @@
+<?php $changes = $block->getChangeLog(); ?>
+
+<form method="post" 
+      action="<?php echo $block->getUrl('venmod/compiler/submit'); ?>"
+      id="compile-form" 
+      class="" 
+      enctype="multipart/form-data">
+    <input type="submit" name="submit" class="action-default" id="submit" value="Index Today's Changes" />
+    <?php echo $block->getBlockHtml('formkey');?>
+</form>
+
+<table class="data-grid" id="">
+    <thead>
+        <tr>
+             <th class="data-grid-th">Group Product</th>
+             <th class="data-grid-th">Simple SKU</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if (!empty($changes)) : ?>
+            <?php foreach ($changes as $change) : ?>
+                <tr>
+                    <td><?php echo $change['grouped']; ?></td>
+                    <td><?php echo $change['simple']; ?></td>
+                </tr>
+            <?php endforeach; ?>
+         <?php else : ?>
+             <tr>
+                 <td colspan="100%">No changes for today</td>
+             </tr>
+         <?php endif; ?>
+    </tbody>
+</table>
+
